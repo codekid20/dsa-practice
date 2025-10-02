@@ -10,6 +10,13 @@ public class maxVowelsInAString {
         int k = 3;
         System.out.println(maxVowels2(s, k));
     }
+
+    // Sliding Window of size k
+    // Count vowels in current window
+    // When window slides forward -> add new char (right), remove old char (left)
+    // Track max vowel count seen across all windows
+
+
     public static int maxVowels(String s, int k) {
          HashSet<Character> map = new HashSet<>(Arrays.asList('a', 'e', 'i', 'o', 'u'));
          int ans = 0;

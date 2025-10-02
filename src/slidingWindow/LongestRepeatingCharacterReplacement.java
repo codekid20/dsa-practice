@@ -8,6 +8,9 @@ public class LongestRepeatingCharacterReplacement {
         System.out.println(characterReplacement(s,k));
     }
 
+    // 1. Minimize the convertions convert less frequent elements.
+    // 2. Formula len(string) - max_frequency > k
+
     public static int characterReplacement(String s, int k) {
         int left = 0;
         int right = 0;

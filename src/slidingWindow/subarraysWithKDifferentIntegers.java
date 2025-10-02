@@ -10,6 +10,13 @@ public class subarraysWithKDifferentIntegers {
         System.out.println(ans);
     }
 
+
+    // 1. use hashmap to store count of distinct elements encountered so far.
+    // 2. count subarrays with lest then or equal to k elements and k - 1 element.
+    // 3. subtract both answers to get exact subarrays with k elements.
+    // 4. also as we move to the right every new element creates more than one subarrays (r - l + 1 particularly).
+
+
     public static int subarraysWithKDistinct(int[] nums, int k) {
         HashMap<Integer, Integer> map = new HashMap<>();
         int count = 0;

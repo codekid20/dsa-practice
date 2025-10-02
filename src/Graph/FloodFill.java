@@ -18,6 +18,9 @@ public class FloodFill {
         int[][] vis = new int[n][m];
 
         int originalColor = image[sr][sc];
+
+        if(originalColor == color) return image;
+
         fillColor(image,sr,sc,vis,originalColor, color);
         return image;
     }
@@ -58,19 +61,19 @@ public class FloodFill {
             image[sr][sc] = color;
 
             if(sr >= 1){
-                dfs1(image,sr - 1, sc, originalColor, color);
+                dfs1(image,sr - 1, sc, originalColor, color); // UP
             }
 
             if(sc >= 1){
-                dfs1(image, sr, sc - 1, originalColor, color);
+                dfs1(image, sr, sc - 1, originalColor, color); // Left
             }
 
             if(sr + 1 < image.length){
-                dfs1(image, sr + 1, sc, originalColor, color);
+                dfs1(image, sr + 1, sc, originalColor, color); // Down
             }
 
             if(sc + 1 < image[0].length){
-                dfs1(image, sr, sc + 1, originalColor, color);
+                dfs1(image, sr, sc + 1, originalColor, color); // Right
             }
         }
     }

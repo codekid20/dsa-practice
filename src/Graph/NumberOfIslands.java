@@ -103,10 +103,10 @@ public class NumberOfIslands {
     }
 
     private int sink(char[][] grid, int row, int col) {
-        if(row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || grid[row][col] == 0){
+        if(row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || grid[row][col] == '0'){
             return 0;
         }
-        grid[row][col] = 0;
+        grid[row][col] = '0';
 
         sink(grid,row - 1, col);
         sink(grid, row + 1, col);

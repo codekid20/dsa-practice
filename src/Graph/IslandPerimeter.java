@@ -6,6 +6,11 @@ public class IslandPerimeter {
         System.out.println(islandPerimeter(grid));
     }
 
+    // Idea :
+    // 1. take a visited array.
+    // 2. travers grid, when encounter 1, dfs recursively on it (only if not visited) if its surrounding are water, increase count.
+    // 3. do it for every land.
+
     static int count; // Cannot pass count in functions calls because it's passed by value and not passed by reference.
     public static int islandPerimeter(int[][] grid) {
         int[][] vis = new int[grid.length][grid[0].length];
@@ -51,7 +56,6 @@ public class IslandPerimeter {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                perimeter += 4;
                 if (grid[i][j] == 1) {
                     perimeter += 4;
                     if (i > 0 && grid[i - 1][j] == 1) {

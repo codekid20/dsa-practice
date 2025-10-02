@@ -9,6 +9,12 @@ public class LongestSubstringWithoutRepeatingCharacters {
         int ans = lengthOfLongestSubstring(str);
         System.out.println(ans);
     }
+
+    // Sliding Window + HashMap
+    // Expand right and count chars
+    // If a char repeats (freq > 1), shrink from left until valid
+    // Track max window length with all unique chars
+
     public static int lengthOfLongestSubstring(String s) {
         HashMap<Character, Integer> map = new HashMap<>();
         int left = 0;

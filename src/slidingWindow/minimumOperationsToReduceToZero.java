@@ -7,6 +7,9 @@ public class minimumOperationsToReduceToZero{
         System.out.println(minOperations(nums,x));
     }
 
+    // 1. Find total sum.
+    // 2. TotalSum - x = Y.
+    // 3. Find a maximum window size of sum Y.
     public static int minOperations(int[] nums, int x) {
         int sum = 0;
         for(int num : nums){

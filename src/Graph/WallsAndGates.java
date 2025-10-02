@@ -27,12 +27,14 @@ public class WallsAndGates {
             distance++;
             for (int i = 0; i < queue.size(); i++) {
                 int[] position = queue.poll();
+                int row = position[0];
+                int col = position[1];
                 for (int j = 0; j < 4; j++) {
-                    int nrow = position[0] + directions[j];
-                    int ncol = position[1] + directions[j + 1];
+                    int nrow = row + directions[j];
+                    int ncol = col + directions[j + 1];
 
                     if(nrow >= 0 && nrow < rows && ncol >= 0 && ncol < cols && rooms[nrow][ncol] == Integer.MAX_VALUE){
-                        rooms[nrow][ncol] = distance;
+                        rooms[nrow][ncol] = distance; // rooms[nrow][ncol] = rooms[row][col];
                         queue.offer(new int[]{nrow,ncol});
                     }
                 }

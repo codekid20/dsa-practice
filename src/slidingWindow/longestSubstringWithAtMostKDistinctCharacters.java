@@ -9,6 +9,11 @@ public class longestSubstringWithAtMostKDistinctCharacters {
         System.out.println(kDistinctChars2(k, str));
     }
 
+    // Sliding Window + HashMap
+    // Expand window by moving right and count chars in map
+    // If distinct chars exceed k -> shrink window from left until valid
+    // Keep track of max window length that satisfies <= k distinct chars
+
     public static int kDistinctChars(int k, String str) {
         HashMap<Character, Integer> map = new HashMap<>();
         int left = 0;
