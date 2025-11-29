@@ -8,6 +8,14 @@ public class MinCostClimbingStairs {
         System.out.println(minCostClimbingStairs2(cost));
     }
 
+//    Key Insight
+//    The "TOP" is an imaginary position after the last index. Since you can take 1 or 2 steps, you can reach TOP from either:
+//
+//    The last step (n-1)
+//    The second-to-last step (n-2)
+//
+//    That's why we check both paths and take the minimum!
+
     // Memoization
     public static int minCostClimbingStairs(int[] cost) {
 

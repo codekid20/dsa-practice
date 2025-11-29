@@ -8,6 +8,8 @@ public class HouseRobber2 {
         System.out.println(rob1(nums));
     }
 
+    // First and last cannot be together. So answer is Max of excluding either one of them.
+
     public static int rob(int[] nums) {
 
         int n = nums.length;

@@ -2,7 +2,7 @@ package Graph;
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
-
+import java.util.Arrays;
 class Destination {
     long first;
     int second;
@@ -26,29 +26,24 @@ public class NumberOfWaysToArriveAtDestination {
         for (int i = 0; i < n; i++) {
             adj.add(new ArrayList<>());
         }
-        
-        int m = roads.length;
-        for (int i = 0; i < m; i++) {
-            int u = roads[i][0];
-            int v = roads[i][1];
-            int d = roads[i][2];
 
-            adj.get(u).add(new Destination(v,d));
-            adj.get(v).add(new Destination(u,d));
+        for (int[] road : roads) {
+            int u = road[0];
+            int v = road[1];
+            int d = road[2];
+            adj.get(u).add(new Destination(d, v));
+            adj.get(v).add(new Destination(d, u));
         }
 
         PriorityQueue<Destination> pq = new PriorityQueue<>((x,y) -> Long.compare(x.first, y.first));
         long[] dist = new long[n];
         int[] ways = new int[n];
 
-        for (int i = 0; i < n; i++) {
-            dist[i] = Long.MAX_VALUE;
-            ways[i] = 0;
-        }
-
+        Arrays.fill(dist, Long.MAX_VALUE);
         dist[0] = 0;
         ways[0] = 1;
         pq.add(new Destination(0,0));
+
         int mod = (int) 1e9 + 7;
         while (!pq.isEmpty()){
             Destination it = pq.poll();
@@ -69,6 +64,6 @@ public class NumberOfWaysToArriveAtDestination {
             }
         }
 
-        return ways[n - 1] % mod;
+        return ways[n - 1];
     }
 }
