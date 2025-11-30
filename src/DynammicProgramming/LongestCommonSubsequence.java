@@ -47,6 +47,38 @@ Space:
 - Tabulation: O(n * m)
 - Space optimized: O(m)
 */
+//
+//## Complete Example: text1="ac", text2="abc"
+//
+//        **Original 2D table:**
+//        ```
+//        ""  a  b  c     ← 4 columns (m+1 = 3+1)
+//        "" [ 0  0  0  0]
+//        a  [ 0  1  1  1]    ← 3 rows (n+1 = 2+1)
+//        c  [ 0  1  1  2]
+//
+//// Initially
+//        dp = [0, 0, 0, 0]  ← Row 0 (base case), has m+1=4 columns
+//
+//// pos1=1 (processing row 1, character 'a')
+//        curr = [0, 0, 0, 0]  ← New row, m+1=4 columns
+//// Fill columns one by one:
+//        curr[1] = 1  // 'a' == 'a'
+//        curr[2] = 1  // 'a' != 'b'
+//        curr[3] = 1  // 'a' != 'c'
+//        curr = [0, 1, 1, 1]
+//        dp = curr    // This row is done
+//
+//// pos1=2 (processing row 2, character 'c')
+//        curr = [0, 0, 0, 0]  ← New row, m+1=4 columns
+//// Fill columns one by one:
+//        curr[1] = 1  // 'c' != 'a'
+//        curr[2] = 1  // 'c' != 'b'
+//        curr[3] = 2  // 'c' == 'c'
+//        curr = [0, 1, 1, 2]
+//        dp = curr    // This row is done
+//
+//// Final result: dp[m] = dp[3] = 2
 
 public class LongestCommonSubsequence {
     public static void main(String[] args) {
