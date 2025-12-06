@@ -7,6 +7,8 @@ public class NinjaTraining {
         
     }
 
+    // Time : O(N * 4) * 3
+    // Space : O(N) + O(N * 4)
     public static int ninjaTraining(int n, int[][] points) {
 
         int[][] dp = new int[n][4];

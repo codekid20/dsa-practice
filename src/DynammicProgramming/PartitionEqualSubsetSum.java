@@ -8,6 +8,77 @@ public class PartitionEqualSubsetSum {
         System.out.println(canPartition2(nums));
     }
 
+    /*
+     * KEY INTUITION:
+     * --------------
+     * If we can partition array into two equal subsets, then:
+     *   - Each subset must have sum = totalSum / 2
+     *   - Total sum must be EVEN (otherwise impossible to split equally)
+     *
+     * So the problem reduces to:
+     * "Can we find a subset with sum = totalSum / 2?"
+     *
+     * If we can find one subset with sum/2, the remaining elements automatically
+     * form the other subset with sum/2!
+     *
+     * APPROACH:
+     * ---------
+     * 1. CALCULATE TOTAL SUM:
+     *    - Add all elements in the array
+     *
+     * 2. EARLY TERMINATION CHECK:
+     *    - If sum is ODD → Return FALSE immediately
+     *    - (Odd sum can NEVER be split into two equal parts)
+     *
+     * 3. SUBSET SUM PROBLEM:
+     *    - Target = sum / 2
+     *    - Find if any subset sums to this target
+     *    - Use memoization to avoid recomputing subproblems
+     *
+     * 4. RECURSIVE LOGIC (partition function):
+     *    - Same as standard subset sum problem
+     *
+     *    BASE CASES:
+     *    - If target == 0: Found valid partition! Return TRUE
+     *    - If index == 0: Check if first element equals target
+     *
+     *    RECURSIVE CHOICES:
+     *    a) NOT TAKE: Exclude current element, check remaining
+     *    b) TAKE: Include current element (only if it doesn't exceed target)
+     *             Reduce target by nums[index] and check remaining
+     *
+     *    Return TRUE if EITHER choice leads to solution
+     *
+     * EXAMPLE WALKTHROUGH:
+     * --------------------
+     * Array: [1, 5, 11, 5]
+     * Total Sum = 22
+     * Target = 22/2 = 11
+     *
+     * We need to find if subset with sum=11 exists:
+     * Possible subsets: [11] ✓ or [1,5,5] ✓
+     * Remaining: [1,5,5] or [11]
+     * Both have sum=11, so return TRUE
+     *
+     * DP STATE:
+     * ---------
+     * dp[index][target] = Can we make 'target' sum using elements from index 0 to 'index'?
+     *
+     * TIME COMPLEXITY: O(n * sum/2) = O(n * sum)
+     *   - n elements, sum/2 possible targets
+     *   - Each state computed once due to memoization
+     *
+     * SPACE COMPLEXITY: O(n * sum/2) + O(n)
+     *   - DP table: O(n * sum/2)
+     *   - Recursion stack: O(n)
+     *
+     * KEY INSIGHT:
+     * ------------
+     * This problem elegantly transforms "partition into equal subsets" into
+     * "find subset with sum = totalSum/2", which is a classic subset sum problem.
+     * The beauty is that finding ONE subset automatically defines the OTHER!
+     */
+
     public static boolean canPartition(int[] nums) {
         int sum = 0;
         for(int num : nums){

@@ -7,7 +7,6 @@ public class MinimumPathSum {
         int[][] grid = {{1,2,3},{4,5,6}};
         System.out.println(minPathSum2(grid));
     }
-
     public static int minPathSum(int[][] grid) {
 
         int m = grid.length;
