@@ -68,12 +68,12 @@ public class Knapsack0_1 {
 
         int n = val.length;
         int[] dp = new int[W + 1];
-        int[] curr = new int[W + 1];
         for (int i = wt[0]; i <= W; i++) {
             dp[i] = val[0];
         }
 
         for (int idx = 1; idx < n; idx++) {
+            int[] curr = new int[W + 1];
             for (int weight = 0; weight <= W; weight++) {
                 int notTake = dp[weight];
                 int take = Integer.MIN_VALUE;
