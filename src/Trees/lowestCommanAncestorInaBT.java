@@ -5,6 +5,9 @@ public class lowestCommanAncestorInaBT {
 
     }
 
+//    **Time**: O(n) - might visit all nodes
+//    **Space**: O(h) - recursion stack
+
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root == null){
             return null;

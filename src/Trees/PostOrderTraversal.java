@@ -7,6 +7,7 @@ public class PostOrderTraversal {
 
     }
 
+//    Left → Right → Root
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
         if(root == null){
@@ -18,6 +19,11 @@ public class PostOrderTraversal {
 
         return ans;
     }
+
+    // Push to stack2 in reverse post-order (Root → Right → Left)
+
+
+
 
     public List<Integer> postorderTraversal2(TreeNode root) {
         List<Integer> postorder = new ArrayList<>();

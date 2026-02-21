@@ -28,9 +28,11 @@ public class BTFromPreorderInorder {
 
         TreeNode root = new TreeNode(preorder[preStart]);
 
-        int inInorder = map.get(root.val);
-        int numsLeft = inInorder - InStart;
+        int inInorder = map.get(root.val); // position of root in inorder
+        int numsLeft = inInorder - InStart; // number of node left of root
 
+        // for left side, nodes will start from prestart + 1, and will go till number of left nodes which we found above, and inorder
+        // will go from 1st node to inorder node position - 1
         root.left = buildTree(preorder, preStart + 1, preStart + numsLeft, inorder, InStart,inInorder - 1, map);
         root.right = buildTree(preorder, preStart + numsLeft + 1, preEnd, inorder, inInorder + 1, InEnd, map);
 

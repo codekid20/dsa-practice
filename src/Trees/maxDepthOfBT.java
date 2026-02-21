@@ -5,6 +5,8 @@ public class maxDepthOfBT {
 
     }
 
+//    Return the maximum depth (height) of a binary tree.
+//    Depth = number of nodes along the longest path from root to leaf.
     public int maxDepth(TreeNode root) {
         if(root == null){
             return 0;

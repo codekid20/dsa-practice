@@ -1,5 +1,7 @@
 package Trees;
 
+import com.sun.source.tree.Tree;
+
 import java.util.*;
 
 public class PreorderTraversal {
@@ -7,6 +9,9 @@ public class PreorderTraversal {
 
     }
 
+//    Root → Left → Right
+//    Time: O(n)
+//    Space: O(h) where h = height
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
         if(root == null){
@@ -20,6 +25,8 @@ public class PreorderTraversal {
         return ans;
     }
 
+//    Time: O(n)
+//    Space: O(h)
     public List<Integer> preorderTraversal2(TreeNode root) {
         List<Integer> preorder = new ArrayList<>();
         if(root == null){
@@ -40,5 +47,28 @@ public class PreorderTraversal {
             }
         }
         return preorder;
+    }
+
+    public List<Integer> preorderTraversal3(TreeNode root){
+
+        List<Integer> ans = new ArrayList<>();
+        Stack<TreeNode> st = new Stack<>();
+        if(root == null) return ans;
+        TreeNode node = root;
+
+        while (node != null || !st.isEmpty()){
+
+            while (node != null){
+                ans.add(node.val);
+                st.push(node);
+                node = node.left;
+            }
+
+
+            node = st.pop();
+            node = node.right;
+        }
+
+        return ans;
     }
 }

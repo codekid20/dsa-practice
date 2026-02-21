@@ -14,6 +14,10 @@ public class InsertIntoABST {
         return root;
     }
 
+    // Note:
+    // 1. A new node will be added either to the left of any node or to the right of it.
+    // 2. If val is bigger than node val, than new node will be inserted in this right tree, If it is smaller than it will be inserted in the left tree.
+
     public void helper(TreeNode node, int val){
 
         if(node == null){

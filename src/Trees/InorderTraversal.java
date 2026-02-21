@@ -9,6 +9,9 @@ public class InorderTraversal {
 
     }
 
+//    Left → Root → Right
+//    For a Binary Search Tree, in-order traversal gives you nodes in sorted order (ascending)
+
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> inorder = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
@@ -29,5 +32,42 @@ public class InorderTraversal {
         }
 
         return inorder;
+    }
+
+//    Time: O(n)
+//    Space: O(h) where h = height (call stack)
+    public List<Integer> inorderTraversal1(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        inorder(root, ans);
+        return ans;
+    }
+
+    public void inorder(TreeNode node, List<Integer> ans){
+
+        if(node == null) return;
+        inorder(node.left, ans);
+        ans.add(node.val);
+        inorder(node.right, ans);
+    }
+
+
+    public List<Integer> inorderTraversal2(TreeNode root){
+
+        List<Integer> ans = new ArrayList<>();
+        Stack<TreeNode> st = new Stack<>();
+        TreeNode node = root;
+        while(node != null || !st.isEmpty()){
+
+            while(node != null){
+                st.add(node);
+                node = node.left;
+            }
+
+            node = st.pop();
+            ans.add(node.val);
+            node = node.right;
+        }
+
+        return ans;
     }
 }
