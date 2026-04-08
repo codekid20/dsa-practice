@@ -6,10 +6,10 @@ import java.util.LinkedList;
 import java.util.ArrayDeque;
 public class SimplifyPath {
     public static void main(String[] args) {
-        String path = "/home/";
+        String path = "/home//foo";
         String[] Char = path.split("/");
         System.out.println(Arrays.toString(Char));
-        System.out.println(simplifyPath(path));
+//        System.out.println(simplifyPath(path));
     }
     public static String simplifyPath(String path) {
 
